@@ -1,14 +1,15 @@
-const express = require("express");
+const express = require('express');
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res
-    .status(200)
-    .json({ message: "Hello from the other ssiiiiide!", app: "Natours" });
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Hello from the other ssiiiiide!',
+    app: 'Natours',
+  });
 });
-app.post("/", (req, res) => {
-  res.send("You can post to this endpoint...");
+app.post('/', (req, res) => {
+  res.send('You can post to this endpoint...');
 });
 port = 3000;
 app.listen(port, () => {
