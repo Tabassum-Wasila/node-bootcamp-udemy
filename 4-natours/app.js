@@ -5,16 +5,6 @@ const app = express();
 
 app.use(express.json());
 
-// app.get('/', (req, res) => {
-//   res.status(200).json({
-//     message: 'Hello from the other ssiiiiide!',
-//     app: 'Natours',
-//   });
-// });
-// app.post('/', (req, res) => {
-//   res.send('You can post to this endpoint...');
-// });
-
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
@@ -80,10 +70,15 @@ app.patch('/api/v1/tours/:id', (req, res) => {
       message: 'tour not found',
     });
 
+  for (let k in req.body) {
+    console.log(k);
+    tour[k] = req.body[k];
+  }
+
   res.status(200).json({
     status: 'success',
     data: {
-      tour: `Updated tour ${id}`,
+      tour,
     },
   });
 });
